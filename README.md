@@ -21,3 +21,9 @@ name = input('name')
 new_user = Users(username=user, name=name)
 db.save(new_user)
 ```
+---
+### Supported datatypes:
+```REAL``` - ```Real()```
+```TEXT``` - ```Text()```
+```INTEGER``` - ```Integer()```
+```BLOB``` - ```Blob()```
