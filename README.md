@@ -23,7 +23,13 @@ db.save(new_user)
 ```
 ---
 ### Supported datatypes:
-```REAL``` - ```Real()```
-```TEXT``` - ```Text()```
-```INTEGER``` - ```Integer()```
-```BLOB``` - ```Blob()```
+```REAL``` - ```Real()``` <br>
+```TEXT``` - ```Text()``` <br>
+```INTEGER``` - ```Integer()``` <br>
+```BLOB``` - ```Blob()``` <br>
+---
+### Desc
+- Connect to Database: ```db = SqlDot('some.db')```
+- Create table: ```db.init_table(table_class)```
+- Set variables: ```setter = table_class(row1=var1, row2=var2)```
+- Save to db: ```db.save(setter)```
