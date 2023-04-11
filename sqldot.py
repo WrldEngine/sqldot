@@ -37,6 +37,22 @@ class SqlDot:
         self.sql.execute(prompt, val_tup)
         self.db.commit()
 
+    def select(self, construct):
+        self.class_name = construct.__name__
+        prompt = f"""SELECT * FROM {self.class_name}"""
+        selector = self.sql.execute(prompt)
+
+        return selector
+
+    def select_where(self, construct, **kwargs):
+        self.c_rgs = kwargs
+        self.class_name = construct.__name__
+        self.c_prompt = ', '.join('{}={}'.format(key, value) for key, value in self.c_rgs.items())
+
+        sql_prompt = f"""SELECT * FROM {self.class_name} WHERE {self.c_prompt}"""
+        selector = self.sql.execute(sql_prompt)
+        return selector
+
 class model:
     def __init__(self, **kwargs):
         self.kw = kwargs
