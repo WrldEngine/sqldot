@@ -47,7 +47,9 @@ class SqlDot:
     def select_where(self, construct, **kwargs):
         self.c_rgs = kwargs
         self.class_name = construct.__name__
-        self.c_prompt = ', '.join('{}={}'.format(key, value) for key, value in self.c_rgs.items())
+        self.c_prompt = ' AND '.join(
+            f'{key}="{value}"' if type(value) == str else f'{key}={value}' for key, value in self.c_rgs.items()
+        )
 
         sql_prompt = f"""SELECT * FROM {self.class_name} WHERE {self.c_prompt}"""
         selector = self.sql.execute(sql_prompt)
